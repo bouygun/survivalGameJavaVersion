@@ -13,31 +13,18 @@ Write a simulation that find outs if the hero would survive or not. You can use 
 > düzenle
 
 ```bash
-survivalGame/
+survivalGameJavaVersion/
 ├── src/ #Source files
-│   ├── models/
-│   │   ├── types.ts  #All types of parameters etc
-│   │   ├── models.ts #Service/method input types
-│   ├── controllers/
-│   │   ├── survivalController.ts #Controller for survival method. This is the main method. Includes validations etc
-│   ├── routes/
-│   │   ├── survivalRoutes.ts #Route the service. 
-│   ├── services/
-│   │   ├── simulationService.ts #Prepare response. Includes desired logic
-│   ├── index.ts #start and listen the project
-├── tests/  #Test files
-│   ├──survivalService.test.ts  #service tests
-│   ├──survivalController.test.ts #controller tests
-├── utils/  #Helpers
-│   ├──errorHandler.ts  #for error msg and statusCode handler
-│   ├──parse.ts #for input parser
-├── tsconfig.json
-├── package.json
+│   ├── Character # enemy & hero char class
+│   ├── Enemy # Enemy class
+│   ├── Hero # Hero class
+│   ├── Main #start and listen the project. Includes text patterns
+│   ├── Resource # Resource class
+│   ├── Simulation # Simulation for desired output
 ├── README.md
 ```
 
 ## Run Locally
-> javaya uyarla
 
 Clone the project
 
@@ -47,43 +34,11 @@ Clone the project
 
 Go to the project directory
 
-Install dependencies
-
-
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  npm run dev
-```
-
-or
-
-```bash
-  npx ts-node src/index.ts
-```
-
+Run from Main Class
 
 ## Running Tests
 
-> javaya uyarla
-
-
-To run tests, run the following command
-
-```bash
-  npm run test
-```
-
-
-## Environment Variables
-
-To run this project, you will need to add the following environment variables to your .env file
-
-`PORT` // you can write 3000
+tests are missing, will be completed
 
 ## API Reference
 
