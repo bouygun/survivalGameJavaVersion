@@ -15,12 +15,12 @@ Write a simulation that find outs if the hero would survive or not. You can use 
 ```bash
 survivalGameJavaVersion/
 ├── src/ #Source files
-│   ├── Character # enemy & hero char class
-│   ├── Enemy # Enemy class
-│   ├── Hero # Hero class
-│   ├── Main #start and listen the project. Includes text patterns
-│   ├── Resource # Resource class
-│   ├── Simulation # Simulation for desired output
+│   ├── com.berce.model.Character # enemy & hero char class
+│   ├── com.berce.model.Enemy # com.berce.model.Enemy class
+│   ├── com.berce.model.Hero # com.berce.model.Hero class
+│   ├── com.berce.Main #start and listen the project. Includes text patterns
+│   ├── com.berce.model.Resource # com.berce.model.Resource class
+│   ├── com.berce.service.Simulation # com.berce.service.Simulation for desired output
 ├── README.md
 ```
 
@@ -34,7 +34,7 @@ Clone the project
 
 Go to the project directory
 
-Run from Main Class
+Run from com.berce.Main Class
 
 ## Running Tests
 
@@ -56,13 +56,13 @@ tests are missing, will be completed
 You can use this request, If you want to hero wins
 ```
 {
-  "inputText": "Resources are 5000 meters away\nHero has 1000 hp\nHero attack is 10\nBug is Enemy\nLion is Enemy\nZombie is Enemy\nBug has 50 hp\nBug attack is 2\nLion has 100 hp\nLion attack is 15\nZombie has 300 hp\nZombie attack is 7\nThere is a Zombie at position 1681\nThere is a Bug at position 276\nThere is a Bug at position 489\nThere is a Lion at position 1527\nThere is a Lion at position 2865\nThere is a Zombie at position 3523"
+  "inputText": "Resources are 5000 meters away\nHero has 1000 hp\nHero attack is 10\nBug is com.berce.model.Enemy\nLion is com.berce.model.Enemy\nZombie is com.berce.model.Enemy\nBug has 50 hp\nBug attack is 2\nLion has 100 hp\nLion attack is 15\nZombie has 300 hp\nZombie attack is 7\nThere is a Zombie at position 1681\nThere is a Bug at position 276\nThere is a Bug at position 489\nThere is a Lion at position 1527\nThere is a Lion at position 2865\nThere is a Zombie at position 3523"
 }
 ```
 
 You can use this request, If you want to enemies win
 ```
 {
-  "inputText": "Resources are 7500 meters away\nHero has 500 hp\nHero attack is 9\nZombieDog is Enemy\nMutant is Enemy\nZombie is Enemy\nMutant has 400 hp\nMutant attack is 8\nZombieDog has 75 hp\nZombieDog attack is 10\nZombie has 300 hp\nZombie attack is 7\nThere is a Zombie at position 1687\nThere is a Mutant at position 274\nThere is a ZombieDog at position 486\nThere is a ZombieDog at position 1897\nThere is a Mutant at position 5332"
+  "inputText": "Resources are 7500 meters away\nHero has 500 hp\nHero attack is 9\nZombieDog is com.berce.model.Enemy\nMutant is com.berce.model.Enemy\nZombie is com.berce.model.Enemy\nMutant has 400 hp\nMutant attack is 8\nZombieDog has 75 hp\nZombieDog attack is 10\nZombie has 300 hp\nZombie attack is 7\nThere is a Zombie at position 1687\nThere is a Mutant at position 274\nThere is a ZombieDog at position 486\nThere is a ZombieDog at position 1897\nThere is a Mutant at position 5332"
 }
 ```
