@@ -23,47 +23,34 @@ public class Simulation {
         writer.write("Hero started journey with " + hero.getHp() + " HP!\n");
 
         int heroPosition = 0;
-        int resourceDistance = resource.getDistanceFromBase();
-        if (resourceDistance < 0) {
-            writer.write("Validation error: Invalid resource distance.\n");
-            return;
-        }
-        if (hero.getHp() <= 0) {
-            writer.write("Hero is Dead!! Last seen at position " + heroPosition + "!!\n");
-            return;
-        }
 
         for (Enemy enemy : enemies) {
-            if (enemy.getPosition() > resourceDistance) break;
-            // hero moves based enemy's position
-            while (heroPosition < enemy.getPosition() && hero.getHp() > 0) {
-                heroPosition++;
-            }
+            // hero moves to enemy position
+            heroPosition = enemy.getPosition();
 
             // fight
-            if (heroPosition == enemy.getPosition() && hero.getHp() > 0) {
-                while (hero.getHp() > 0 && enemy.getHp() > 0) {
-                    hero.attack(enemy);
-                    if (enemy.getHp() > 0) {
-                        enemy.attack(hero);
-                    }
+            while (hero.getHp() > 0 && enemy.getHp() > 0) {
+                hero.attack(enemy);
+                if (enemy.getHp() > 0) {
+                    enemy.attack(hero);
                 }
+            }
 
-                //if enemy lose
-                if (enemy.getHp() <= 0) {
-                    writer.write("Hero defeated " + enemy.getName() + " with " + hero.getHp() + " HP remaining\n");
-                }
+            // enemy dead
+            if (enemy.getHp() <= 0) {
+                writer.write("Hero defeated " + enemy.getName() + " with " + hero.getHp() + " HP remaining\n");
+            }
 
-                // if hero dead
-                if (hero.getHp() <= 0) {
-                    writer.write("Hero is Dead!! Last seen at position " + heroPosition + "!!\n");
-                    return;
-                }
+            // hero dead
+            if (hero.getHp() <= 0) {
+                writer.write("Hero is Dead!! Last seen at position " + heroPosition + "!!\n");
+                writer.flush();
+                return;
             }
         }
 
-        // check resoruce distance
-        if (hero.getHp() > 0 && heroPosition > resourceDistance) {
+        // hero reach resource & survived
+        if (hero.getHp() > 0) {
             writer.write("Hero Survived!\n");
         } else {
             writer.write("Hero is Dead!! Last seen at position " + heroPosition + "!!\n");

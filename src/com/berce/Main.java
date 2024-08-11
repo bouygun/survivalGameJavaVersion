@@ -30,8 +30,8 @@ public class Main {
             inputFilePath = "resources/input_hero_win.txt";
             outputFilePath = "resources/output_hero_win.txt";
         } else {
-            inputFilePath = "resource/input_hero_lose.txt";
-            outputFilePath = "resource/output_hero_lose.txt";
+            inputFilePath = "resources/input_hero_lose.txt";
+            outputFilePath = "resources/output_hero_lose.txt";
         }
 
         try {
@@ -60,7 +60,7 @@ public class Main {
             System.out.println("Simulation is done. Check the " + outputFilePath + " file.");
 
         } catch (Exception e) {
-            System.out.println("An error occurred during the simulation. Please check your input and try again.");
+            System.out.println("An error occurred during the simulation. Please check your input or this code and try again.");
         }
     }
 }
