@@ -4,6 +4,8 @@ import com.berce.model.Enemy;
 import com.berce.model.Hero;
 import com.berce.model.Resource;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.List;
 
 public class Simulation {
@@ -17,62 +19,56 @@ public class Simulation {
         this.resource = resource;
     }
 
-    public void start() {
-        System.out.println("Hero started journey with " + hero.getHp() + " HP!");
+    public void start(BufferedWriter writer) throws IOException {
+        writer.write("Hero started journey with " + hero.getHp() + " HP!\n");
 
         int heroPosition = 0;
         int resourceDistance = resource.getDistanceFromBase();
         if (resourceDistance < 0) {
-            System.out.println("validation err");
+            writer.write("Validation error: Invalid resource distance.\n");
             return;
         }
         if (hero.getHp() <= 0) {
-            System.out.println("Hero is Dead!! Last seen at position " + heroPosition + "!!");
+            writer.write("Hero is Dead!! Last seen at position " + heroPosition + "!!\n");
             return;
         }
 
         for (Enemy enemy : enemies) {
             if (enemy.getPosition() > resourceDistance) break;
+            // hero moves based enemy's position
             while (heroPosition < enemy.getPosition() && hero.getHp() > 0) {
                 heroPosition++;
             }
 
-            while (hero.getHp() > 0 && enemy.getHp() > 0) {
-                hero.attack(enemy);
-
-                enemy.attack(hero);
-
-            }
-
-            if (enemy.getHp() <= 0) {
-                System.out.println("Hero defeated " + enemy.getName() + " with " + hero.getHp() + " HP remaining");
-            }
-
-
-            if (hero.getHp() > 0) {
-                while (heroPosition < resource.getDistanceFromBase() && hero.getHp() > 0) {
-                    heroPosition++;
+            // fight
+            if (heroPosition == enemy.getPosition() && hero.getHp() > 0) {
+                while (hero.getHp() > 0 && enemy.getHp() > 0) {
+                    hero.attack(enemy);
+                    if (enemy.getHp() > 0) {
+                        enemy.attack(hero);
+                    }
                 }
 
-                if (heroPosition > resource.getDistanceFromBase()) {
-                    System.out.println("Hero Survived");
+                //if enemy lose
+                if (enemy.getHp() <= 0) {
+                    writer.write("Hero defeated " + enemy.getName() + " with " + hero.getHp() + " HP remaining\n");
                 }
-/*
 
-            while (heroPosition < resource.getDistanceFromBase() && hero.getHp() > 0) {
-                heroPosition++;
-            }
-
-            if (heroPosition > resource.getDistanceFromBase()) {
-                System.out.println("Hero Survived");
-            } else {
-                System.out.println("Hero Survived but did not reach the resource. Distance remaining: " + (resource.getDistanceFromBase() - heroPosition));
-            }
- */
-            } else {
-                System.out.println("Hero is Dead!! Last seen at position " + heroPosition + "!!");
-                return;
+                // if hero dead
+                if (hero.getHp() <= 0) {
+                    writer.write("Hero is Dead!! Last seen at position " + heroPosition + "!!\n");
+                    return;
+                }
             }
         }
+
+        // check resoruce distance
+        if (hero.getHp() > 0 && heroPosition > resourceDistance) {
+            writer.write("Hero Survived!\n");
+        } else {
+            writer.write("Hero is Dead!! Last seen at position " + heroPosition + "!!\n");
+        }
+
+        writer.flush();
     }
 }

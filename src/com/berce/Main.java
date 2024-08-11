@@ -2,23 +2,43 @@ package com.berce;
 
 import com.berce.model.Enemy;
 import com.berce.model.Hero;
-import com.berce.service.Simulation;
 import com.berce.model.Resource;
-import com.berce.utils.InputParser;
-import com.berce.utils.InputValidator;
+import com.berce.parser.InputParser;
+import com.berce.service.Simulation;
+import com.berce.validator.InputValidator;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        try{
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Pls enter the text input: ");
 
+            Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Which one is?");
+        System.out.println("1. Hero survived!");
+        System.out.println("2. Hero is dead!");
+        int choice = scanner.nextInt();
+
+        String inputFilePath;
+        String outputFilePath;
+        if (choice == 1) {
+            inputFilePath = "resources/input_hero_win.txt";
+            outputFilePath = "resources/output_hero_win.txt";
+        } else {
+            inputFilePath = "resource/input_hero_lose.txt";
+            outputFilePath = "resource/output_hero_lose.txt";
+        }
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(inputFilePath));
             StringBuilder inputBuilder = new StringBuilder();
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                if (line.isEmpty()) break;
+            String line;
+            while ((line = reader.readLine()) != null) {
                 inputBuilder.append(line).append("\n");
             }
             String input = inputBuilder.toString();
@@ -34,8 +54,12 @@ public class Main {
 
             Simulation simulation = new Simulation(hero, enemies, resource);
 
-            simulation.start();
-        } catch(Exception e) {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath));
+            simulation.start(writer);
+            writer.close();
+            System.out.println("Simulation is done. Check the " + outputFilePath + " file.");
+
+        } catch (Exception e) {
             System.out.println("An error occurred during the simulation. Please check your input and try again.");
         }
     }
