@@ -14,13 +14,24 @@ Write a simulation that find outs if the hero would survive or not. You can use 
 
 ```bash
 survivalGameJavaVersion/
+├── resources/ # input and output files for write/read process
 ├── src/ #Source files
-│   ├── com.berce.model.Character # enemy & hero char class
-│   ├── com.berce.model.Enemy # com.berce.model.Enemy class
-│   ├── com.berce.model.Hero # com.berce.model.Hero class
-│   ├── com.berce.Main #start and listen the project. Includes text patterns
-│   ├── com.berce.model.Resource # com.berce.model.Resource class
-│   ├── com.berce.service.Simulation # com.berce.service.Simulation for desired output
+│   ├── com.berce
+│   ├──├──model
+│   ├──├──├──Character # enemy & hero char properties abstract class
+│   ├──├──├──Enemy # Enemy class
+│   ├──├──├──Hero # Hero class,
+│   ├──├──├──Resource # Resource class
+│   ├──├──service
+│   ├──├──├──Simulation # Simulation for desired output
+│   ├──├──handler
+│   ├──├──├──ErrorHandler # Error handler - empty now
+│   ├──├──parser
+│   ├──├──├──InputParser # Includes input parser for desired input schema
+│   ├──├──validator
+│   ├──├──├──InputValidator # Includes input validations for desired input schema
+│   ├──├──Main #start and listen the project. Includes text patterns
+│   ├── com.berce..
 ├── README.md
 ```
 
@@ -29,7 +40,7 @@ survivalGameJavaVersion/
 Clone the project
 
 ```bash
-  git clone https://github.com/bouygun/survivalGame.git
+  git clone https://github.com/bouygun/survivalGameJavaVersion.git
 ```
 
 Go to the project directory
@@ -38,11 +49,14 @@ Run from com.berce.Main Class
 
 ## Running Tests
 
+> ## **it's not over yet** 
 tests are missing, will be completed
 
 ## API Reference
 
 #### POST
+
+> ## **it's not over yet**
 
 ```http
   POST http://localhost:${PORT}/api/survivalGame
