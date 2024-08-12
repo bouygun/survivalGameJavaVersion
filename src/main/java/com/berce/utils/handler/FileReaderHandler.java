@@ -1,7 +1,11 @@
 package com.berce.utils.handler;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FileReaderHandler {
+
+    private static final Logger logger = Logger.getLogger(FileReaderHandler.class.getName());
 
     public String bufferedToString(String filePath) {
         try (Reader ireader = new FileReader(filePath);
@@ -13,14 +17,11 @@ public class FileReaderHandler {
             }
             return inputBuilder.toString();
         } catch (FileNotFoundException e) {
-            System.err.println("File not found: " + filePath);
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "File not found: " + filePath, e );
         } catch (IOException e) {
-            System.err.println("IO Exception when reading file: " + filePath);
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "IO Exception when reading file: " + filePath, e);
         } catch (Exception e) {
-            System.out.println("An unexpected error occurred while reading the file: " + filePath);
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "An unexpected error occurred while reading the file: " + filePath, e);
         }
         return null;
     }
