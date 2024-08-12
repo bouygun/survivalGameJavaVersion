@@ -1,4 +1,4 @@
-package com.berce.parser;
+package com.berce.utils.parser;
 
 import com.berce.model.Enemy;
 import com.berce.model.Hero;
