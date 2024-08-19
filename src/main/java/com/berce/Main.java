@@ -7,16 +7,34 @@ import com.berce.utils.parser.InputParser;
 import com.berce.service.Simulation;
 import com.berce.utils.validator.*;
 
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) {
 
-        Choice choice = InputValidator.validateUserChoice();
+        Properties properties = new Properties();
+        String outputFilePath = " ";
+        String inputFilePath = " ";
+        try (InputStream input = Main.class.getClassLoader().getResourceAsStream("config.properties")) {
+            if (input == null) {
+                System.out.println("Sorry, unable to find config.config.properties");
+                return;
+            }
+            properties.load(input);
 
-        FilePath filePath = FilePath.fromChoice(choice);
-        String inputFilePath = filePath.getInputFilePath();
-        String outputFilePath = filePath.getOutputFilePath();
+            Choice choice = InputValidator.validateUserChoice();
+
+             inputFilePath = properties.getProperty(choice == Choice.HERO_SURVIVED ? "input.hero.win" : "input.hero.lose");
+             outputFilePath = properties.getProperty(choice == Choice.HERO_SURVIVED ? "output.hero.win" : "output.hero.lose");
+
+        } catch (IOException e) {
+            System.out.println("An error occurred during the simulation. Please check your input or this code and try again.");
+        }
+
 
         try {
             FileReaderHandler readerHandler = new FileReaderHandler();

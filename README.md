@@ -16,22 +16,33 @@ Write a simulation that find outs if the hero would survive or not. You can use 
 survivalGameJavaVersion/
 ├── resources/ # input and output files for write/read process
 ├── src/ #Source files
-│   ├── com.berce
-│   ├──├──model
-│   ├──├──├──Character # enemy & hero char properties abstract class
-│   ├──├──├──Enemy # Enemy class
-│   ├──├──├──Hero # Hero class,
-│   ├──├──├──Resource # Resource class
-│   ├──├──service
-│   ├──├──├──Simulation # Simulation for desired output
-│   ├──├──handler
-│   ├──├──├──ErrorHandler # Error handler - empty now
-│   ├──├──parser
-│   ├──├──├──InputParser # Includes input parser for desired input schema
-│   ├──├──validator
-│   ├──├──├──InputValidator # Includes input validations for desired input schema
-│   ├──├──Main #start and listen the project. Includes text patterns
-│   ├── com.berce..
+│   ├── main
+│   ├── ├── resources
+│   ├──├──├──config.properties # env params
+│   ├──├──├──input_hero_lose.txt # hero lose input version
+│   ├──├──├──input_hero_win.txt # hero win input version
+│   ├──├──├──output_hero_lose.txt # hero lose output version
+│   ├──├──├──output_hero_win.txt # hero win output version
+│   ├── ├── java
+│   ├──├──├──com.berce
+│   ├──├──├──├── model
+│   ├──├──├──├──├──Character # enemy & hero char properties abstract class
+│   ├──├──├──├──├── Enemy # Enemy class
+│   ├──├──├──├──├── Hero # Hero class,
+│   ├──├──├──├──├── Resource # Resource class
+│   ├──├──├──├──├── Choice # Input choice enum. 1 or 2?
+│   ├──├──├──├── service
+│   ├──├──├──├──├── Simulation # Simulation for desired output
+│   ├──├──├──├── utils
+│   ├──├──├──├──├── handler
+│   ├──├──├──├──├──├──  FileReaderHandler # Input read handler
+│   ├──├──├──├──├──├──  FileWriterHandler # Output write handler
+│   ├──├──├──├──├──  parser
+│   ├──├──├──├──├──├──  InputParser # Includes input parser for desired input schema
+│   ├──├──├──├──├──  validator
+│   ├──├──├──├──├──├──  InputValidator # Includes input validations for desired input schema
+│   ├──├──├──├── Main #start and listen the project
+│   ├── test
 ├── README.md
 ```
 
