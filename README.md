@@ -13,10 +13,18 @@ Write a simulation that find outs if the hero would survive or not. You can use 
 
 ```bash
 survivalGameJavaVersion/
-├── resources/ # input and output files for write/read process
+├── web/ # webapp files
+│   ├── WEB-INF
+│   ├──├──config.properties # env params
+│   ├──├──input_hero_lose.txt # hero lose input version
+│   ├──├──input_hero_win.txt # hero win input version
+│   ├──├──output_hero_lose.txt # hero lose output version
+│   ├──├──output_hero_win.txt # hero win output version
+│   ├── index.jsp
+│   ├── result.jsp
 ├── src/ #Source files
 │   ├── main
-│   ├── ├── resources
+│   ├── ├── resources # input and output files for write/read process
 │   ├──├──├──config.properties # env params
 │   ├──├──├──input_hero_lose.txt # hero lose input version
 │   ├──├──├──input_hero_win.txt # hero win input version
@@ -56,6 +64,8 @@ Clone the project
 Go to the project directory
 
 Run from com.berce.Main Class
+or
+Run with Tomcat from 8080 port
 
 ## Running Tests
 
