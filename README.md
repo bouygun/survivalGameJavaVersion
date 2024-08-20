@@ -72,31 +72,10 @@ Run with Tomcat from 8080 port
 > ## **it's not over yet** 
 tests are missing, will be completed
 
-## API Reference
-
-#### POST
-
-> ## **it's not over yet**
-
-```http
-  POST http://localhost:${PORT}/api/survivalGame
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `inputText`      | `string` | **Required**. all requirements |
-
-
-You can use this request, If you want to hero wins
-```
-{
-  "inputText": "Resources are 5000 meters away\nHero has 1000 hp\nHero attack is 10\nBug is com.berce.model.Enemy\nLion is com.berce.model.Enemy\nZombie is com.berce.model.Enemy\nBug has 50 hp\nBug attack is 2\nLion has 100 hp\nLion attack is 15\nZombie has 300 hp\nZombie attack is 7\nThere is a Zombie at position 1681\nThere is a Bug at position 276\nThere is a Bug at position 489\nThere is a Lion at position 1527\nThere is a Lion at position 2865\nThere is a Zombie at position 3523"
-}
-```
-
-You can use this request, If you want to enemies win
-```
-{
-  "inputText": "Resources are 7500 meters away\nHero has 500 hp\nHero attack is 9\nZombieDog is com.berce.model.Enemy\nMutant is com.berce.model.Enemy\nZombie is com.berce.model.Enemy\nMutant has 400 hp\nMutant attack is 8\nZombieDog has 75 hp\nZombieDog attack is 10\nZombie has 300 hp\nZombie attack is 7\nThere is a Zombie at position 1687\nThere is a Mutant at position 274\nThere is a ZombieDog at position 486\nThere is a ZombieDog at position 1897\nThere is a Mutant at position 5332"
-}
-```
+## Demo
+First page. You should choose an option. 
+![choice.png](img_1.png)
+If you want hero survived:
+![heroSurvived.png](img_2.png)
+Or hero dead:
+![heroDead.png](img_3.png)
