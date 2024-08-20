@@ -7,10 +7,9 @@ Write a simulation that find outs if the hero would survive or not. You can use 
 
 ## Tech Stack
 
-**Server:** Java
+**Server:** Java, JSP
 
 ## Folder Structure
-> düzenle
 
 ```bash
 survivalGameJavaVersion/

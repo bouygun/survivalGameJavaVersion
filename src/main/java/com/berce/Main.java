@@ -16,27 +16,27 @@ import java.util.Properties;
 public class Main {
     public static void main(String[] args) {
 
-        Properties properties = new Properties();
-        String outputFilePath = " ";
-        String inputFilePath = " ";
-        try (InputStream input = Main.class.getClassLoader().getResourceAsStream("config.properties")) {
-            if (input == null) {
-                System.out.println("Sorry, unable to find config.config.properties");
-                return;
-            }
-            properties.load(input);
-
-            Choice choice = InputValidator.validateUserChoice();
-
-             inputFilePath = properties.getProperty(choice == Choice.HERO_SURVIVED ? "input.hero.win" : "input.hero.lose");
-             outputFilePath = properties.getProperty(choice == Choice.HERO_SURVIVED ? "output.hero.win" : "output.hero.lose");
-
-        } catch (IOException e) {
-            System.out.println("An error occurred during the simulation. Please check your input or this code and try again.");
-        }
-
-
         try {
+            Properties properties = new Properties();
+            String outputFilePath = " ";
+            String inputFilePath = " ";
+
+            try (InputStream input = Main.class.getClassLoader().getResourceAsStream("config.properties")) {
+                if (input == null) {
+                    System.out.println("Sorry, unable to find config.config.properties");
+                    return;
+                }
+                properties.load(input);
+
+                Choice choice = InputValidator.validateUserChoice();
+
+                inputFilePath = properties.getProperty(choice == Choice.HERO_SURVIVED ? "input.hero.win" : "input.hero.lose");
+                outputFilePath = properties.getProperty(choice == Choice.HERO_SURVIVED ? "output.hero.win" : "output.hero.lose");
+
+            } catch (IOException e) {
+                System.out.println("An error occurred during the simulation. Please check your input or this code and try again.");
+            }
+
             FileReaderHandler readerHandler = new FileReaderHandler();
             String input = readerHandler.bufferedToString(inputFilePath);
 

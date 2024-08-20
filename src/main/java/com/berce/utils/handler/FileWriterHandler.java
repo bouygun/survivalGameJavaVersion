@@ -11,7 +11,7 @@ public class FileWriterHandler {
             writer.write(content);
             System.out.println(content);
         } catch (IOException e) {
-            System.err.println("Error while writing file");
+            System.out.println("Error while writing file");
             throw e;
         }
     }
@@ -19,9 +19,10 @@ public class FileWriterHandler {
     public void appendToFile(String filePath, String content) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             writer.write(content);
+            writer.flush();
             System.out.println(content);
         } catch (IOException e) {
-            System.err.println("Error while appending to file");
+            System.out.println("Error while appending to file");
             throw e;
         }
     }
